@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ListView?>
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CustomDeclarationsDataBase.Controller">
+    <top>
+        <MenuBar>
+            <Menu text="Файл">
+                <MenuItem text="Сформировать" onAction="#getResults"/>
+                <MenuItem fx:id="saveMenu" text="Сохранить как" onAction="#saveResults"/>
+                <MenuItem fx:id="printMenu" text="Печать" onAction="#handlePrint"/>
+                <MenuItem text="Выход" onAction="#handleExit"/>
+            </Menu>
+            <Menu text="Настройки">
+                <MenuItem onAction="#setDefaults" text="Сброс настроек"/>
+                <MenuItem onAction="#handleLoadSettings" text="Загрузить настройки"/>
+                <MenuItem onAction="#handleSaveSettings" text="Сохранить настройки"/>
+            </Menu>
+            <Menu text="Помощь">
+                <MenuItem onAction="#showStartinfo" text="О программе"/>
+                <MenuItem onAction="#handleOpenHomepage" text="Перейти на сайт"/>
+                <MenuItem onAction="#checkUpdates" text="Проверить обновление"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <left>
+        <VBox>
+            <Button fx:id="btn_makeTable" text="Сформировать отчёт" minWidth="305" onAction="#getResults"/>
+            <TitledPane animated="true" text="Учитывать накладные за период:">
+                <content>
+                    <GridPane hgap="5" vgap="5">
+                        <Label text="с:"/>
+                        <DatePicker fx:id="datefrom" GridPane.columnIndex="1" maxWidth="115"/>
+                        <Label text="   по:" GridPane.columnIndex="2"/>
+                        <DatePicker fx:id="dateto" GridPane.columnIndex="3" maxWidth="115"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+            <TitledPane animated="true" text="В строках отчёта выводить:">
+                <content>
+                    <GridPane hgap="5" vgap="5">
+                        <RadioButton fx:id="rb_imp" text="Импортёров (получателей)"/>
+                        <RadioButton fx:id="rb_exp" text="Экспортёров (отправителей)" GridPane.rowIndex="1"/>
+                        <RadioButton fx:id="rb_cntr" text="Страны отправления" GridPane.rowIndex="2"/>
+                        <RadioButton fx:id="rb_gds" text="Коды товаров по УКТЗЕД" GridPane.rowIndex="5"/>
+                        <RadioButton fx:id="rb_section" text="Разделы товаров по УКТЗЕД" GridPane.rowIndex="3"/>
+                        <RadioButton fx:id="rb_group" text="Группы товаров по УКТЗЕД" GridPane.rowIndex="4"/>
+                        <RadioButton fx:id="rb_declaration" text="Таможенные декларации (детально)" GridPane.rowIndex="6"/>
+                    </GridPane>
+                </content>
+            </TitledPane>
+            <TitledPane animated="true" text="Добавить отборы (фильтры):">
+                <content>
+                    <VBox spacing="5">
+                        <GridPane hgap="5">
+                            <Label text="Поле:"/>
+                            <Label text="Тип сравнения:" GridPane.columnIndex="1"/>
+                            <ChoiceBox fx:id="select_field" onAction="#filterFieldChange" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <ChoiceBox fx:id="filter_method" GridPane.columnIndex="1" GridPane.rowIndex="1" minWidth="90"/>
+                        </GridPane>
+                        <HBox spacing="5">
+                            <Label text="Значение:"/>
+                            <TextField fx:id="filter_value"/>
+                            <Button text="Добавить" fx:id="add_filter" onAction="#filterAdd"/>
+                        </HBox>
+                        <ListView fx:id="added_filters"/>
+                        <HBox spacing="5">
+                            <Button fx:id="remove_filter" onAction="#removeFilter" text="Удалить фильтр" minWidth="140"/>
+                            <Button fx:id="clear_filters" onAction="#clearFilters" text="Удалить все фильтры" minWidth="140"/>
+                        </HBox>
+                    </VBox>
+                </content>
+            </TitledPane>
+
+        </VBox>
+    </left>
+    <center>
+        <WebView fx:id="mywebview"/>
+    </center>
+    <bottom>
+        <HBox>
+            <Label fx:id="status" text="Формируется отчёт:" visible="false"/>
+            <ProgressBar fx:id="progress" visible="false" prefWidth="Infinity"/>
+        </HBox>
+    </bottom>
+</BorderPane>

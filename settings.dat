@@ -1,0 +1,5 @@
+䐠䐾declaration
+2019-04-16-13-39.html
+WHERE td.code LIKE "65%" 	Код УКТВЕД товара начинается с "65"
+AND td.country LIKE "%CN%" 	Код страны отправления содержит "CN"
+AND td.importer_code LIKE "%30487219%" 	Код ЄДРПОУ импортёра содержит "30487219"
