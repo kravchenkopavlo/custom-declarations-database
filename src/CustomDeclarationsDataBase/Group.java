@@ -9,11 +9,11 @@ public class Group implements DataItem {
     private static final String HTMLCAPTIONS = "<td>Код</td><td>Описание группы УКТВЕД</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td>Всего по %d группам УКТВЕД:</td>";
 
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -22,7 +22,7 @@ public class Group implements DataItem {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -31,7 +31,7 @@ public class Group implements DataItem {
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

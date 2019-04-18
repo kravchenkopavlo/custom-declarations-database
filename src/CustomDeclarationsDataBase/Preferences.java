@@ -37,55 +37,55 @@ public class Preferences implements Serializable {
         this.rb_declaration = rb_declaration;
     }
 
-    public void setOpenPage(String openPage) {
+    void setOpenPage(String openPage) {
         this.openPage = openPage;
     }
 
-    public FilterSet getFilterSet() {
+    FilterSet getFilterSet() {
         return filterSet;
     }
 
-    public LocalDate getDatefrom() {
+    LocalDate getDatefrom() {
         return datefrom;
     }
 
-    public LocalDate getDateto() {
+    LocalDate getDateto() {
         return dateto;
     }
 
-    public boolean isRb_imp() {
+    boolean isRb_imp() {
         return rb_imp;
     }
 
-    public boolean isRb_exp() {
+    boolean isRb_exp() {
         return rb_exp;
     }
 
-    public boolean isRb_cntr() {
+    boolean isRb_cntr() {
         return rb_cntr;
     }
 
-    public boolean isRb_section() {
+    boolean isRb_section() {
         return rb_section;
     }
 
-    public boolean isRb_group() {
+    boolean isRb_group() {
         return rb_group;
     }
 
-    public boolean isRb_gds() {
+    boolean isRb_gds() {
         return rb_gds;
     }
 
-    public boolean isRb_declaration() {
+    boolean isRb_declaration() {
         return rb_declaration;
     }
 
-    public String getOpenPage() {
+    String getOpenPage() {
         return openPage;
     }
 
-    public List<String> getFilterTextList() {
+    List<String> getFilterTextList() {
         return filterTextList;
     }
 }

@@ -10,22 +10,11 @@ public class Product implements DataItem{
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td>Всего по %d кодам УКТВЕД</td>";
 
 
-    public Product() {
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -33,7 +22,7 @@ public class Product implements DataItem{
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -41,7 +30,7 @@ public class Product implements DataItem{
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

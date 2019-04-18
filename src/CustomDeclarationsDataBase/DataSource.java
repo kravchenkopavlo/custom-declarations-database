@@ -1,21 +1,11 @@
 package CustomDeclarationsDataBase;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataSource {
-    public final String CONNECTION_STRING = "jdbc:sqlite:c:\\work\\td2017.db";
-
-    private boolean doDynamicQuery;
-
-    public void setDoDynamicQuery(boolean doDynamicQuery) {
-        this.doDynamicQuery = doDynamicQuery;
-    }
+class DataSource {
+    private static final String CONNECTION_STRING = "jdbc:sqlite:c:\\work\\td2017.db";
 
     private static final String SECTIONS_QUERY = "SELECT sections.code, sections.description, sum(weight), sum(cost) FROM td " +
             "JOIN groups ON substr(td.code,1,2) = groups.code " +
@@ -54,17 +44,15 @@ public class DataSource {
 
     private Connection connection;
 
-    public boolean open() {
+    void open() {
         try {
             connection = DriverManager.getConnection(CONNECTION_STRING);
-            return true;
         } catch(SQLException e) {
             System.out.println("Couldn't connect to database: " + e.getMessage());
-            return false;
         }
     }
 
-    public void close() {
+    void close() {
         try {
             if(connection != null) {
                 connection.close();
@@ -74,7 +62,7 @@ public class DataSource {
         }
     }
 
-    public PreparedStatement getPrepStatement(String query, FilterSet filterSet) throws SQLException {
+    private PreparedStatement getPrepStatement(String query, FilterSet filterSet) throws SQLException {
         System.out.println(String.format(query,filterSet.getFilters()));
         PreparedStatement preparedStatement = connection.prepareStatement(String.format(query,filterSet.getFilters()));
         List<Object> values = new ArrayList<>(filterSet.getFilterValues());
@@ -95,7 +83,7 @@ public class DataSource {
         return preparedStatement;
     }
 
-    public List<DataItem> getSections(FilterSet filterSet) {
+    List<DataItem> getSections(FilterSet filterSet) {
         List<DataItem> sections = new ArrayList<>();
         try (ResultSet results = getPrepStatement(SECTIONS_QUERY,filterSet).executeQuery()) {
                 while (results.next()) {
@@ -112,7 +100,7 @@ public class DataSource {
         return sections;
     }
 
-    public List<DataItem> getGroups(FilterSet filterSet) {
+    List<DataItem> getGroups(FilterSet filterSet) {
         List<DataItem> groups = new ArrayList<>();
         try (ResultSet results = getPrepStatement(GROUPS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
@@ -129,7 +117,7 @@ public class DataSource {
         return groups;
     }
 
-    public List<DataItem> getImporters(FilterSet filterSet) {
+    List<DataItem> getImporters(FilterSet filterSet) {
         List<DataItem> importers = new ArrayList<>();
         try (ResultSet results = getPrepStatement(IMPORTERS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
@@ -147,7 +135,7 @@ public class DataSource {
         return importers;
     }
 
-    public List<DataItem> getProducts(FilterSet filterSet) {
+    List<DataItem> getProducts(FilterSet filterSet) {
         List<DataItem> products = new ArrayList<>();
         try (ResultSet results = getPrepStatement(PRODUCTS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
@@ -164,7 +152,7 @@ public class DataSource {
         return products;
     }
 
-    public List<DataItem> getDeclarations(FilterSet filterSet) {
+    List<DataItem> getDeclarations(FilterSet filterSet) {
         List<DataItem> declarations = new ArrayList<>();
         try (ResultSet results = getPrepStatement(DECLARATIONS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
@@ -189,7 +177,7 @@ public class DataSource {
         return declarations;
     }
 
-    public List<DataItem> getExporters(FilterSet filterSet) {
+    List<DataItem> getExporters(FilterSet filterSet) {
         List<DataItem> exporters = new ArrayList<>();
         try (ResultSet results = getPrepStatement(EXPORTERS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
@@ -206,7 +194,7 @@ public class DataSource {
         return exporters;
     }
 
-    public List<DataItem> getCountries(FilterSet filterSet) {
+    List<DataItem> getCountries(FilterSet filterSet) {
         List<DataItem> countries = new ArrayList<>();
         try (ResultSet results = getPrepStatement(COUNTRIES_QUERY,filterSet).executeQuery()) {
             while (results.next()) {

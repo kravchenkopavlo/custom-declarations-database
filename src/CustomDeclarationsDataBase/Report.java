@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Report {
+class Report {
     private String title;
     private String filename;
     private String filters;
@@ -23,27 +23,27 @@ public class Report {
     private static final String HTMLtail = "</table></font></body></html>";
 
 
-    public Report() {
+    Report() {
         this.filename = LocalDate.now().toString()+"-"+String.format("%d", LocalTime.now().getHour())+"-"+String.format("%d",LocalTime.now().getMinute())+".html";
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-    public String getFilename() {
+    String getFilename() {
         return this.filename;
     }
 
-    public void setRows(List<DataItem> list) {
+    void setRows(List<DataItem> list) {
         this.rows = new ArrayList<>(list);
     }
 
-    public void setFiltersText(String filters) {
+    void setFiltersText(String filters) {
         this.filters = filters;
     }
 
-    public void make(){
+    void make(){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(this.filename))) {
             bw.write(String.format(HTMLhead,title));
             bw.write(String.format(HTMLtitle,title));

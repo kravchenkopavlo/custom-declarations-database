@@ -10,18 +10,15 @@ public class Importer implements DataItem{
     private static final String HTMLCAPTIONS = "<td>Код</td><td>Наименование импортёра (получателя)</td><td>Юридический адрес импортёра</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td>Всего по %d импортёрам:</td><td></td>";
 
-    public Importer() {
-    }
-
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public void setAdress(String adress) {
+    void setAdress(String adress) {
         this.adress = adress;
     }
 
@@ -29,7 +26,7 @@ public class Importer implements DataItem{
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -37,7 +34,7 @@ public class Importer implements DataItem{
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

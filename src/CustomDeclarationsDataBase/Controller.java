@@ -155,68 +155,71 @@ public void initialize() {
     @FXML
     private void filterAdd() {
         String s = "";
-
-        if (select_field.getValue().equals("Экспортёр (отправитель)")) {
-            s = s + "td.exporter_name ";
-//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
-        }
-        if (select_field.getValue().equals("Код страны отправления")) {
-            s = s + "td.country ";
-//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
-        }
-        if (select_field.getValue().equals("Импортёр (получатель)")) {
-            s = s + "td.importer_name ";
-//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
-        }
-        if (select_field.getValue().equals("Код ЄДРПОУ импортёра")) {
-            s = s + "td.importer_code ";
-//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
-        }
-        if (select_field.getValue().equals("Код УКТВЕД товара")) {
-            s = s + "td.code ";
-//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
-        }
-        if (select_field.getValue().equals("Описание товара")) {
-            s = s + "td.description ";
-//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
-        }
-        if (select_field.getValue().equals("Вес товара в кг")) {
-            s = s + "td.weight ";
-//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
-        }
-        if (select_field.getValue().equals("Стоимость товара в USD")) {
-            s = s + "td.cost ";
-//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
+        switch (select_field.getValue()) {
+            case "Экспортёр (отправитель)":
+                s = "td.exporter_name ";
+                break;
+            case "Код страны отправления":
+                s = "td.country ";
+                break;
+            case "Импортёр (получатель)":
+                s = "td.importer_name ";
+                break;
+            case "Код ЄДРПОУ импортёра":
+                s = "td.importer_code ";
+                break;
+            case "Код УКТВЕД товара":
+                s = "td.code ";
+                break;
+            case "Описание товара":
+                s = "td.description ";
+                break;
+            case "Вес товара в кг":
+                s = "td.weight ";
+                break;
+            case "Стоимость товара в USD":
+                s = "td.cost ";
+                break;
         }
 
         Object v = new Object();
-        if (filter_method.getValue().equals("содержит")) {
-            s = s+"LIKE ?";
-            v = (String) "%"+filter_value.getText()+"%";
-        } else if (filter_method.getValue().equals("не содержит")) {
-            s = s+"NOT LIKE ?";
-            v = (String) "%"+filter_value.getText()+"%";
-        } else if (filter_method.getValue().equals("начинается с")) {
-            s = s+"LIKE ?";
-            v = (String) filter_value.getText()+"%";
-        } else if (filter_method.getValue().equals("равен")) {
-            s = s+"= ?";
-            v = (String) filter_value.getText();
-        } else if (filter_method.getValue().equals(">")) {
-            s = s+"> ?";
-            v = Double.parseDouble(filter_value.getText());
-        } else if (filter_method.getValue().equals(">=")) {
-            s = s+">= ?";
-            v = Double.parseDouble(filter_value.getText());
-        } else if (filter_method.getValue().equals("<")) {
-            s = s+"< ?";
-            v = Double.parseDouble(filter_value.getText());
-        } else if (filter_method.getValue().equals("<=")) {
-            s = s+"<= "+filter_value.getText()+" ";
-            v = Double.parseDouble(filter_value.getText());
-        } else if (filter_method.getValue().equals("=")) {
-            s = s+"= ?";
-            v = Double.parseDouble(filter_value.getText());
+        switch (filter_method.getValue()) {
+            case "содержит":
+                s = s+"LIKE ?";
+                v = "%"+filter_value.getText()+"%";
+                break;
+            case "не содержит":
+                s = s+"NOT LIKE ?";
+                v = "%"+filter_value.getText()+"%";
+                break;
+            case "начинается с":
+                s = s+"LIKE ?";
+                v = filter_value.getText()+"%";
+                break;
+            case "равен":
+                s = s+"= ?";
+                v = filter_value.getText();
+                break;
+            case ">":
+                s = s+"> ?";
+                v = Double.parseDouble(filter_value.getText());
+                break;
+            case ">=":
+                s = s+">= ?";
+                v = Double.parseDouble(filter_value.getText());
+                break;
+            case "<":
+                s = s+"< ?";
+                v = Double.parseDouble(filter_value.getText());
+                break;
+            case "<=":
+                s = s+"<= "+filter_value.getText()+" ";
+                v = Double.parseDouble(filter_value.getText());
+                break;
+            case "=":
+                s = s+"= ?";
+                v = Double.parseDouble(filter_value.getText());
+                break;
         }
 
         filterSet.addFilter(s,v);
@@ -326,6 +329,7 @@ public void initialize() {
         filename = report.getFilename();
 
         showReport();
+        dataSource.close();
     }
 
     private void showReport() {
@@ -361,32 +365,13 @@ public void initialize() {
 
     private String getHTMLFilters(){
     // метод для получения строки текста с описанием текущих установленных фильтров в формате HTML
-        StringBuilder sb = new StringBuilder();
-        sb.append("<small>");
+        String filters = "<small>";
         for (String s:added_filters.getItems()) {
-            sb.append(s+"; ");
+            filters += s+"; ";
         }
-        sb.append("</small>");
-        return sb.toString();
+        filters += "</small>";
+        return filters;
     }
-
-//    private String getSQLFilters() {
-//
-////        // Этот метод обрабатывает состояние элементов интерфейса, на основании которых формирует
-////        // часть SQL-запроса, ответственного за фильтрацию получаемых данных
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        for (String s:filters) {
-//            stringBuilder.append(s);
-//        }
-//
-//        stringBuilder.append("AND date >= ");
-//        stringBuilder.append(datefrom.getValue().toEpochDay());
-//        stringBuilder.append(" AND date <= ");
-//        stringBuilder.append(dateto.getValue().toEpochDay());
-//
-//        return stringBuilder.toString();
-//    }
 
     @FXML
     private void handleExit() {

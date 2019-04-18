@@ -9,11 +9,11 @@ public class Section implements DataItem {
     private static final String HTMLCAPTIONS = "<td></td><td>Описание раздела УКТВЕД</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td>Всего по %d разделам:</td>";
 
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -21,7 +21,7 @@ public class Section implements DataItem {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -29,7 +29,7 @@ public class Section implements DataItem {
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

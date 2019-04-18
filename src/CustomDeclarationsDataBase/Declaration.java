@@ -20,67 +20,35 @@ public class Declaration implements DataItem {
             "<td>Раздел УКТВЕД</td><td>Описание таможенной декларации</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td></td><td>Всего по %s деклараций:</td><td></td><td></td><td></td><td></td><td></td><td></td>";
 
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
+    void setDate(int date) {
         this.date = date;
     }
 
-    public String getExporter_name() {
-        return exporter_name;
-    }
-
-    public void setExporter_name(String exporter_name) {
+    void setExporter_name(String exporter_name) {
         this.exporter_name = exporter_name;
     }
 
-    public String getImporter_code() {
-        return importer_code;
-    }
-
-    public void setImporter_code(String importer_code) {
+    void setImporter_code(String importer_code) {
         this.importer_code = importer_code;
     }
 
-    public String getImporter_adress() {
-        return importer_adress;
-    }
-
-    public void setImporter_adress(String importer_adress) {
+    void setImporter_adress(String importer_adress) {
         this.importer_adress = importer_adress;
     }
 
-    public String getImporter_name() {
-        return importer_name;
-    }
-
-    public void setImporter_name(String importer_name) {
+    void setImporter_name(String importer_name) {
         this.importer_name = importer_name;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public String getGroup_description() {
-        return group_description;
-    }
-
-    public void setGroup_description(String group_description) {
+    void setGroup_description(String group_description) {
         this.group_description = group_description;
     }
 
-    public String getCountry_name() {
-        return country_name;
-    }
-
-    public void setCountry_name(String country_name) {
+    void setCountry_name(String country_name) {
         this.country_name = country_name;
     }
 
@@ -88,7 +56,7 @@ public class Declaration implements DataItem {
         return description;
     }
 
-    public void setDescription(String description) {
+    void setDescription(String description) {
         this.description = description;
     }
 
@@ -97,7 +65,7 @@ public class Declaration implements DataItem {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -106,7 +74,7 @@ public class Declaration implements DataItem {
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

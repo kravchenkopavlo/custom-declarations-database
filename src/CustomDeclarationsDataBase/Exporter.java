@@ -9,22 +9,11 @@ public class Exporter implements DataItem{
     private static final String HTMLCAPTIONS = "<td>Наименование экспортёра (отправителя)</td><td>Страна отправления</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td>Всего по %d экспортёрам:</td><td></td>";
 
-    public Exporter() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
+    void setCountry(String country) {
         this.country = country;
     }
 
@@ -32,7 +21,7 @@ public class Exporter implements DataItem{
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -40,7 +29,7 @@ public class Exporter implements DataItem{
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
 

@@ -9,19 +9,11 @@ public class Country implements DataItem{
     private static final String HTMLCAPTIONS = "<td></td><td>Страна отправления</td>";
     private static final String HTMLRESULTS = "<tr><td></td><td></td><td>Всего по %d странам отправления:</td>";
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
+    void setCode(String code) {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -29,7 +21,7 @@ public class Country implements DataItem{
         return weight;
     }
 
-    public void setWeight(double weight) {
+    void setWeight(double weight) {
         this.weight = weight;
     }
 
@@ -37,7 +29,7 @@ public class Country implements DataItem{
         return cost;
     }
 
-    public void setCost(double cost) {
+    void setCost(double cost) {
         this.cost = cost;
     }
     public String getHTMLCaptions() {
