@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/FilterSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Preferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CustomDeclarationsDataBase/CustomDeclarationsDataBase/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CustomDeclarationsDataBase/CustomDeclarationsDataBase/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CustomDeclarationsDataBase/CustomDeclarationsDataBase/DataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CustomDeclarationsDataBase/CustomDeclarationsDataBase/DataSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -60,26 +70,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="509" column="23" selection-start-line="509" selection-start-column="23" selection-end-line="509" selection-end-column="23" />
+            <state relative-caret-position="3510">
+              <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module-info.java">
+        <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Preferences.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="-230">
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/FilterSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state>
+              <caret column="35" selection-start-column="35" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -88,8 +98,8 @@
         <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/mainWindow.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
+            <state relative-caret-position="234">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -102,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+            <state relative-caret-position="-823">
+              <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -111,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Report.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-745">
-              <caret line="46" column="85" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="85" />
+            <state relative-caret-position="1378">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -120,7 +130,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Declaration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="520">
               <caret line="20" column="91" selection-start-line="20" selection-start-column="91" selection-end-line="20" selection-end-column="91" />
             </state>
           </provider>
@@ -149,11 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkString(description)</find>
-      <find>checkString()</find>
-      <find>repla</find>
-      <find>datas</find>
-      <find>сумма,</find>
       <find>small</find>
       <find>&lt;center</find>
       <find>country</find>
@@ -174,6 +179,16 @@
       <find>initia</find>
       <find>showsa</find>
       <find>setde</find>
+      <find>getresu</find>
+      <find>addF</find>
+      <find>filterSet</find>
+      <find>load</find>
+      <find>loads</find>
+      <find>initial</find>
+      <find>save</find>
+      <find>ini</find>
+      <find>addf`</find>
+      <find>initi</find>
     </findStrings>
     <replaceStrings>
       <replace>.getValue().equals</replace>
@@ -190,6 +205,9 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -218,14 +236,16 @@
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/sample.fxml" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Main.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Report.java" />
-        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/test.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataItem.java" />
-        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Group.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Declaration.java" />
         <option value="$PROJECT_DIR$/2019-04-15-21-20.html" />
         <option value="$PROJECT_DIR$/src/module-info.java" />
+        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/test.java" />
+        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Preferences.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/mainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java" />
+        <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/FilterSet.java" />
         <option value="$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java" />
       </list>
     </option>
@@ -237,6 +257,9 @@
     <option name="width" value="1298" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -245,23 +268,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="CustomDeclarationsDataBase" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CustomDeclarationsDataBase" type="462c0819:PsiDirectoryNode" />
+              <item name="customs-declarations-database" type="b2602c69:ProjectViewProjectNode" />
+              <item name="customs-declarations-database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CustomDeclarationsDataBase" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CustomDeclarationsDataBase" type="462c0819:PsiDirectoryNode" />
+              <item name="customs-declarations-database" type="b2602c69:ProjectViewProjectNode" />
+              <item name="customs-declarations-database" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CustomDeclarationsDataBase" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CustomDeclarationsDataBase" type="462c0819:PsiDirectoryNode" />
+              <item name="customs-declarations-database" type="b2602c69:ProjectViewProjectNode" />
+              <item name="customs-declarations-database" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="CustomDeclarationsDataBase" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -269,6 +291,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,9 +304,9 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555438574562" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555532215750" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testDB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -442,7 +465,7 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.17883995" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18152525" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -517,12 +540,24 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java</url>
+          <line>453</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="filename" language="JAVA" />
-        <watch expression="datefrom.getValue().toString()" language="JAVA" />
-        <watch expression="dateto.getValue().toString()" language="JAVA" />
-        <watch expression="s" language="JAVA" />
+        <watch expression="preferences.getOpenPage()" language="JAVA" />
+        <watch expression="preferences.isRb_declaration()" language="JAVA" />
+        <watch expression="preferences.isRb_section()" language="JAVA" />
+        <watch expression="preferences.getDatefrom()" language="JAVA" />
+        <watch expression="preferences" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -533,17 +568,27 @@
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>s</expression-string>
+        <expression-string>preferences</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dateto.getValue().toString()</expression-string>
+        <expression-string>preferences.getDatefrom()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>datefrom.getValue().toString()</expression-string>
+        <expression-string>preferences.isRb_section()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>preferences.isRb_declaration()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>preferences.getOpenPage()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -553,27 +598,22 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>caption</expression-string>
+        <expression-string>((ArrayList) rows).size()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cb_cost.isSelected()</expression-string>
+        <expression-string>section.getWeight()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cb_adress.isSelected()</expression-string>
+        <expression-string>section.getHTMLrow()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cb_code.isSelected()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cb_weight.isSelected()</expression-string>
+        <expression-string>s</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -635,21 +675,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Documents/lib/javafx-sdk-11.0.2/lib/javafx.base.jar!/javafx/event/Event.class">
+    <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.base.jar!/javafx/event/Event.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Documents/lib/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/Node.class">
+    <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/Node.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="3781" selection-start-line="3781" selection-end-line="3781" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Documents/lib/javafx-sdk-11.0.2/lib/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class">
+    <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.fxml.jar!/javafx/fxml/FXMLLoader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="1200" column="20" selection-start-line="1200" selection-start-column="20" selection-end-line="1200" selection-end-column="20" />
@@ -684,23 +724,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1106">
-          <caret line="63" column="1" lean-forward="true" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/temp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Group.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/temp.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/nio/file/Files.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-190">
@@ -715,55 +739,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/lib/javafx-sdk-11.0.2/lib/javafx.web.jar!/javafx/scene/web/WebEngine.class">
+    <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.web.jar!/javafx/scene/web/WebEngine.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="631" column="35" lean-forward="true" selection-start-line="631" selection-start-column="35" selection-end-line="631" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Declaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="20" column="91" selection-start-line="20" selection-start-column="91" selection-end-line="20" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2019-04-15-21-20.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Report.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-745">
-          <caret line="46" column="85" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/2019-04-15-21-20.html" />
     <entry file="file://$PROJECT_DIR$/src/module-info.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -771,18 +754,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Declaration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="20" column="91" selection-start-line="20" selection-start-column="91" selection-end-line="20" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.sql/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="207" column="9" selection-start-line="207" selection-start-column="9" selection-end-line="207" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Report.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1378">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../lib/javafx-sdk-11.0.2/lib/javafx.base.jar!/javafx/beans/property/SimpleObjectProperty.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/mainWindow.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
+        <state relative-caret-position="234">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Preferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Group.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-823">
+          <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/FilterSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomDeclarationsDataBase/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="509" column="23" selection-start-line="509" selection-start-column="23" selection-end-line="509" selection-end-column="23" />
+        <state relative-caret-position="3510">
+          <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
         </state>
       </provider>
     </entry>

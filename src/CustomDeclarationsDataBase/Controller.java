@@ -1,30 +1,25 @@
 package CustomDeclarationsDataBase;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.print.*;
 import javafx.scene.control.*;
-import javafx.scene.transform.Scale;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
     private final URL startLink = getClass().getResource("start.html"); // ссылка на текст, который открывается при запуске программы
     private WebEngine engine;
     private String filename;
-    private List<String> filters = new ArrayList<>();
     private final static String SETTINGS_FILE = "settings.dat";
+    private FilterSet filterSet;
 
     @FXML
     WebView mywebview; // окно вывода всех отчётов
@@ -95,6 +90,8 @@ public class Controller {
 public void initialize() {
     engine = mywebview.getEngine();
 
+    filterSet = new FilterSet();
+
     // отключаем пункты меню Сохранить и Печать - до первого сформированного отчёта
     saveMenu.setDisable(true);
     printMenu.setDisable(true);
@@ -109,7 +106,7 @@ public void initialize() {
     rb_group.setToggleGroup(toggleGroup);
     rb_declaration.setToggleGroup(toggleGroup);
 
-// устанавливаем
+    // устанавливаем
     select_field.getItems().add("Экспортёр (отправитель)");
     select_field.getItems().add("Код страны отправления");
     select_field.getItems().add("Импортёр (получатель)");
@@ -120,7 +117,6 @@ public void initialize() {
     select_field.getItems().add("Стоимость товара в USD");
     select_field.setValue("Код УКТВЕД товара");
 
-//    setDefaults();
     loadSettings(SETTINGS_FILE);
 }
 
@@ -139,13 +135,11 @@ public void initialize() {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     @FXML
     private void clearFilters() {
-        filters.clear();
+        filterSet.clear();
         added_filters.getItems().clear();
     }
 
@@ -153,16 +147,8 @@ public void initialize() {
     private void removeFilter() {
         int index = added_filters.getSelectionModel().getSelectedIndex();
         if (index >=0 ) {
-            if (index==0 && added_filters.getItems().size()>1) {
-                filters.set(1,filters.get(1).replace("AND","WHERE"));
-            }
-
-            filters.remove(index);
+            filterSet.removeFilter(index);
             added_filters.getItems().remove(index);
-
-            for (String filter:filters) {
-                System.out.println(filter);
-            }
         }
     }
 
@@ -170,56 +156,71 @@ public void initialize() {
     private void filterAdd() {
         String s = "";
 
-        if (added_filters.getItems().size() > 0) {
-            s = "AND ";
-        } else {
-            s = "WHERE ";
-        }
-
         if (select_field.getValue().equals("Экспортёр (отправитель)")) {
             s = s + "td.exporter_name ";
-            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
+//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
         }
         if (select_field.getValue().equals("Код страны отправления")) {
             s = s + "td.country ";
-            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
+//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
         }
         if (select_field.getValue().equals("Импортёр (получатель)")) {
             s = s + "td.importer_name ";
-            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
+//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
         }
         if (select_field.getValue().equals("Код ЄДРПОУ импортёра")) {
             s = s + "td.importer_code ";
-            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
+//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
         }
         if (select_field.getValue().equals("Код УКТВЕД товара")) {
             s = s + "td.code ";
-            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
+//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
         }
         if (select_field.getValue().equals("Описание товара")) {
             s = s + "td.description ";
-            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
+//            filter_value.setText(filter_value.getText().replaceAll("[^a-zа-яёіїA-ZА-ЯЁІЇ\\d]",""));
         }
         if (select_field.getValue().equals("Вес товара в кг")) {
             s = s + "td.weight ";
-            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
+//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
         }
         if (select_field.getValue().equals("Стоимость товара в USD")) {
             s = s + "td.cost ";
-            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
+//            filter_value.setText(filter_value.getText().replaceAll("\\D",""));
         }
 
-        if (filter_method.getValue().equals("содержит")) {s = s+"LIKE \"%"+filter_value.getText()+"%\" ";}
-        if (filter_method.getValue().equals("не содержит")) {s = s+"NOT LIKE \"%"+filter_value.getText()+"%\" ";}
-        if (filter_method.getValue().equals("начинается с")) {s = s+"LIKE \""+filter_value.getText()+"%\" ";}
-        if (filter_method.getValue().equals("равен")) {s = s+"= \""+filter_value.getText()+"\"";}
-        if (filter_method.getValue().equals(">")) {s = s+"> "+filter_value.getText()+" ";}
-        if (filter_method.getValue().equals(">=")) {s = s+">= "+filter_value.getText()+" ";}
-        if (filter_method.getValue().equals("<")) {s = s+"< "+filter_value.getText()+" ";}
-        if (filter_method.getValue().equals("<=")) {s = s+"<= "+filter_value.getText()+" ";}
-        if (filter_method.getValue().equals("=")) {s = s+"= "+filter_value.getText()+" ";}
+        Object v = new Object();
+        if (filter_method.getValue().equals("содержит")) {
+            s = s+"LIKE ?";
+            v = (String) "%"+filter_value.getText()+"%";
+        } else if (filter_method.getValue().equals("не содержит")) {
+            s = s+"NOT LIKE ?";
+            v = (String) "%"+filter_value.getText()+"%";
+        } else if (filter_method.getValue().equals("начинается с")) {
+            s = s+"LIKE ?";
+            v = (String) filter_value.getText()+"%";
+        } else if (filter_method.getValue().equals("равен")) {
+            s = s+"= ?";
+            v = (String) filter_value.getText();
+        } else if (filter_method.getValue().equals(">")) {
+            s = s+"> ?";
+            v = Double.parseDouble(filter_value.getText());
+        } else if (filter_method.getValue().equals(">=")) {
+            s = s+">= ?";
+            v = Double.parseDouble(filter_value.getText());
+        } else if (filter_method.getValue().equals("<")) {
+            s = s+"< ?";
+            v = Double.parseDouble(filter_value.getText());
+        } else if (filter_method.getValue().equals("<=")) {
+            s = s+"<= "+filter_value.getText()+" ";
+            v = Double.parseDouble(filter_value.getText());
+        } else if (filter_method.getValue().equals("=")) {
+            s = s+"= ?";
+            v = Double.parseDouble(filter_value.getText());
+        }
 
-        filters.add(s);
+        filterSet.addFilter(s,v);
+
         added_filters.getItems().add(select_field.getValue()+" "+
                 filter_method.getValue()+" \""+filter_value.getText()+"\"");
         filter_value.setText("");
@@ -272,46 +273,50 @@ public void initialize() {
         // передаём созданному отчёту текст установленных фильтров
         report.setFiltersText(getHTMLFilters());
 
+        // устанавливаем
+        filterSet.setDatefrom(datefrom.getValue());
+        filterSet.setDateto(datefrom.getValue());
+
         // в зависимости от типа данных в строках отчёта - оформляем отчёт
         if (rb_section.isSelected()) {
-            List<DataItem> sections = dataSource.getSections(getSQLFilters());
+            List<DataItem> sections = dataSource.getSections(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по разделам УКТВЕД за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(sections);
         }
 
         if (rb_cntr.isSelected()) {
-            List<DataItem> countries = dataSource.getCountries(getSQLFilters());
+            List<DataItem> countries = dataSource.getCountries(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по странам отправления за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(countries);
         }
 
         if (rb_imp.isSelected()) {
-            List<DataItem> importers = dataSource.getImporters(getSQLFilters());
+            List<DataItem> importers = dataSource.getImporters(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по импортёрам (отправителям) за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(importers);
 
         }
 
         if (rb_declaration.isSelected()) {
-            List<DataItem> declarations = dataSource.getDeclarations(getSQLFilters());
+            List<DataItem> declarations = dataSource.getDeclarations(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по таможенным декларациям за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(declarations);
         }
 
         if (rb_gds.isSelected()) {
-            List<DataItem> products = dataSource.getProducts(getSQLFilters());
+            List<DataItem> products = dataSource.getProducts(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по кодам УКТВЕД за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(products);
         }
 
         if (rb_exp.isSelected()) {
-            List<DataItem> exporters = dataSource.getExporters(getSQLFilters());
+            List<DataItem> exporters = dataSource.getExporters(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по экспортёрам (отправителям) за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(exporters);
         }
 
         if (rb_group.isSelected()) {
-            List<DataItem> groups = dataSource.getGroups(getSQLFilters());
+            List<DataItem> groups = dataSource.getGroups(filterSet);
             report.setTitle("Анализ импорта в Украину товаров по группам УКТВЕД за период с: "+datefrom.getValue().toString()+" по: "+dateto.getValue().toString());
             report.setRows(groups);
         }
@@ -365,23 +370,23 @@ public void initialize() {
         return sb.toString();
     }
 
-    private String getSQLFilters() {
-
-//        // Этот метод обрабатывает состояние элементов интерфейса, на основании которых формирует
-//        // часть SQL-запроса, ответственного за фильтрацию получаемых данных
-
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String s:filters) {
-            stringBuilder.append(s);
-        }
-
-        stringBuilder.append("AND date >= ");
-        stringBuilder.append(datefrom.getValue().toEpochDay());
-        stringBuilder.append(" AND date <= ");
-        stringBuilder.append(dateto.getValue().toEpochDay());
-
-        return stringBuilder.toString();
-    }
+//    private String getSQLFilters() {
+//
+////        // Этот метод обрабатывает состояние элементов интерфейса, на основании которых формирует
+////        // часть SQL-запроса, ответственного за фильтрацию получаемых данных
+//
+//        StringBuilder stringBuilder = new StringBuilder();
+//        for (String s:filters) {
+//            stringBuilder.append(s);
+//        }
+//
+//        stringBuilder.append("AND date >= ");
+//        stringBuilder.append(datefrom.getValue().toEpochDay());
+//        stringBuilder.append(" AND date <= ");
+//        stringBuilder.append(dateto.getValue().toEpochDay());
+//
+//        return stringBuilder.toString();
+//    }
 
     @FXML
     private void handleExit() {
@@ -408,29 +413,17 @@ public void initialize() {
             e.printStackTrace();
         }
         // сохраняем состояние окна в файл
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(settingsFile))) {
-            bw.write((int) datefrom.getValue().toEpochDay());
-            bw.write((int) dateto.getValue().toEpochDay());
-            if (rb_imp.isSelected()) bw.write("imp");
-            if (rb_exp.isSelected()) bw.write("exp");
-            if (rb_cntr.isSelected()) bw.write("cntr");
-            if (rb_section.isSelected()) bw.write("section");
-            if (rb_group.isSelected()) bw.write("group");
-            if (rb_gds.isSelected()) bw.write("gds");
-            if (rb_declaration.isSelected()) bw.write("declaration");
-            bw.newLine();
-            if (filename.length()==0) {
-                bw.write(startLink.toString());
-            } else {
-                bw.write(filename);
-            }
-            bw.newLine();
-            for (String filter:filters) {
-                bw.write(filter.toString()+"\t"+added_filters.getItems().get(filters.indexOf(filter)));
-                bw.newLine();
-            }
-
-        } catch (IOException e) {
+        Preferences preferences = new Preferences(filterSet,added_filters.getItems(), datefrom.getValue(),dateto.getValue(),
+                rb_imp.isSelected(),rb_exp.isSelected(),rb_cntr.isSelected(),rb_section.isSelected(),
+                rb_group.isSelected(),rb_gds.isSelected(),rb_declaration.isSelected());
+        if (filename.length()==0) {
+            preferences.setOpenPage(startLink.toString());
+        } else {
+            preferences.setOpenPage(filename);
+        }
+        try (ObjectOutputStream ous = new ObjectOutputStream(new FileOutputStream(settingsFile))) {
+            ous.writeObject(preferences);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -442,29 +435,27 @@ public void initialize() {
             setDefaults();
         }
         else {
-            try (BufferedReader br = new BufferedReader(new FileReader(settingsFile))) {
-                datefrom.setValue(LocalDate.ofEpochDay(br.read()));
-                dateto.setValue(LocalDate.ofEpochDay(br.read()));
-                String s = br.readLine();
-                if (s.equals("imp")) rb_imp.setSelected(true);
-                if (s.equals("exp")) rb_exp.setSelected(true);
-                if (s.equals("cntr")) rb_cntr.setSelected(true);
-                if (s.equals("section")) rb_section.setSelected(true);
-                if (s.equals("group")) rb_group.setSelected(true);
-                if (s.equals("gds")) rb_gds.setSelected(true);
-                if (s.equals("declaration")) rb_declaration.setSelected(true);
-                filename = br.readLine();
-                showReport();
-                filters.clear();
-                added_filters.getItems().clear();
-                while ((s = br.readLine()) != null) {
-                    filters.add(s.split("\t")[0]);
-                    added_filters.getItems().add(s.split("\t")[1]);
-                }
-
-            } catch (IOException e) {
+            Preferences preferences = new Preferences();
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(settingsFile))) {
+                preferences = (Preferences) ois.readObject();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            datefrom.setValue(preferences.getDatefrom());
+            dateto.setValue(preferences.getDateto());
+            rb_imp.setSelected(preferences.isRb_imp());
+            rb_exp.setSelected(preferences.isRb_exp());
+            rb_cntr.setSelected(preferences.isRb_cntr());
+            rb_section.setSelected(preferences.isRb_section());
+            rb_group.setSelected(preferences.isRb_group());
+            rb_gds.setSelected(preferences.isRb_gds());
+            rb_declaration.setSelected(preferences.isRb_declaration());
+            filename = preferences.getOpenPage();
+            showReport();
+            filterSet = preferences.getFilterSet();
+            filterSet = preferences.getFilterSet();
+            added_filters.getItems().clear();
+            added_filters.getItems().addAll(preferences.getFilterTextList());
         }
     }
 

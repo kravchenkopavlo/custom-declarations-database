@@ -74,12 +74,47 @@ public class DataSource {
         }
     }
 
-    public List<DataItem> getGroups(String filters) {
-        System.out.println(String.format(GROUPS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(GROUPS_QUERY,filters))) {
+    public PreparedStatement getPrepStatement(String query, FilterSet filterSet) throws SQLException {
+        System.out.println(String.format(query,filterSet.getFilters()));
+        PreparedStatement preparedStatement = connection.prepareStatement(String.format(query,filterSet.getFilters()));
+        List<Object> values = new ArrayList<>(filterSet.getFilterValues());
+        for(Object object: values) {
+            switch (object.getClass().getName()) {
+                case "java.lang.Integer":
+                    preparedStatement.setInt(values.indexOf(object)+1,(int) object);
+                    break;
+                case "java.lang.Double":
+                    preparedStatement.setDouble(values.indexOf(object)+1,(double) object);
+                    break;
+                case "java.lang.String":
+                    preparedStatement.setString(values.indexOf(object)+1,(String) object);
+                    break;
+            }
+        }
+        System.out.println(preparedStatement.toString());
+        return preparedStatement;
+    }
 
-            List<DataItem> groups = new ArrayList<>();
+    public List<DataItem> getSections(FilterSet filterSet) {
+        List<DataItem> sections = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(SECTIONS_QUERY,filterSet).executeQuery()) {
+                while (results.next()) {
+                    Section section = new Section();
+                    section.setCode(results.getString("code"));
+                    section.setDescription(results.getString("description"));
+                    section.setWeight(results.getDouble("sum(weight)"));
+                    section.setCost(results.getDouble("sum(cost)"));
+                    sections.add(section);
+                }
+            } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sections;
+    }
+
+    public List<DataItem> getGroups(FilterSet filterSet) {
+        List<DataItem> groups = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(GROUPS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Group group = new Group();
                 group.setCode(results.getString("group_code"));
@@ -88,21 +123,15 @@ public class DataSource {
                 group.setCost(results.getDouble("sum(cost)"));
                 groups.add(group);
             }
-
-            return groups;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return groups;
     }
 
-    public List<DataItem> getImporters(String filters) {
-        System.out.println(String.format(IMPORTERS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(IMPORTERS_QUERY,filters))) {
-
-            List<DataItem> importers = new ArrayList<>();
+    public List<DataItem> getImporters(FilterSet filterSet) {
+        List<DataItem> importers = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(IMPORTERS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Importer importer = new Importer();
                 importer.setName(results.getString("importer_name"));
@@ -112,21 +141,15 @@ public class DataSource {
                 importer.setCost(results.getDouble("sum(cost)"));
                 importers.add(importer);
             }
-
-            return importers;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return importers;
     }
 
-    public List<DataItem> getProducts(String filters) {
-        System.out.println(String.format(PRODUCTS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(PRODUCTS_QUERY,filters))) {
-
-            List<DataItem> products = new ArrayList<>();
+    public List<DataItem> getProducts(FilterSet filterSet) {
+        List<DataItem> products = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(PRODUCTS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Product product = new Product();
                 product.setCode(results.getString("code"));
@@ -135,21 +158,15 @@ public class DataSource {
                 product.setCost(results.getDouble("sum(cost)"));
                 products.add(product);
             }
-
-            return products;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return products;
     }
 
-    public List<DataItem> getDeclarations(String filters) {
-        System.out.println(String.format(DECLARATIONS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(DECLARATIONS_QUERY,filters))) {
-
-            List<DataItem> declarations = new ArrayList<>();
+    public List<DataItem> getDeclarations(FilterSet filterSet) {
+        List<DataItem> declarations = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(DECLARATIONS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Declaration declaration = new Declaration();
                 declaration.setDate(results.getInt("date"));
@@ -166,20 +183,15 @@ public class DataSource {
                 declarations.add(declaration);
             }
 
-            return declarations;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return declarations;
     }
 
-    public List<DataItem> getExporters(String filters) {
-        System.out.println(String.format(EXPORTERS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(EXPORTERS_QUERY,filters))) {
-
-            List<DataItem> exporters = new ArrayList<>();
+    public List<DataItem> getExporters(FilterSet filterSet) {
+        List<DataItem> exporters = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(EXPORTERS_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Exporter exporter = new Exporter();
                 exporter.setName(results.getString("exporter_name"));
@@ -188,46 +200,15 @@ public class DataSource {
                 exporter.setCost(results.getDouble("sum(cost)"));
                 exporters.add(exporter);
             }
-
-            return exporters;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return exporters;
     }
 
-
-    public List<DataItem> getSections(String filters) {
-        System.out.println(String.format(SECTIONS_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(SECTIONS_QUERY,filters))) {
-
-            List<DataItem> sections = new ArrayList<>();
-            while (results.next()) {
-                Section section = new Section();
-                section.setCode(results.getString("code"));
-                section.setDescription(results.getString("description"));
-                section.setWeight(results.getDouble("sum(weight)"));
-                section.setCost(results.getDouble("sum(cost)"));
-                sections.add(section);
-            }
-
-            return sections;
-
-        } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
-        }
-    }
-
-
-    public List<DataItem> getCountries(String filters) {
-        System.out.println(String.format(COUNTRIES_QUERY,filters));
-        try (Statement statement = connection.createStatement();
-             ResultSet results = statement.executeQuery(String.format(COUNTRIES_QUERY,filters))) {
-
-            List<DataItem> countries = new ArrayList<>();
+    public List<DataItem> getCountries(FilterSet filterSet) {
+        List<DataItem> countries = new ArrayList<>();
+        try (ResultSet results = getPrepStatement(COUNTRIES_QUERY,filterSet).executeQuery()) {
             while (results.next()) {
                 Country country = new Country();
                 country.setCode(results.getString("country"));
@@ -236,12 +217,9 @@ public class DataSource {
                 country.setCost(results.getDouble("sum(cost)"));
                 countries.add(country);
             }
-
-            return countries;
-
         } catch (SQLException e) {
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
+            e.printStackTrace();
         }
+        return countries;
     }
 }
