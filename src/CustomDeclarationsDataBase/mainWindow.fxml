@@ -45,9 +45,9 @@
             <TitledPane text="Учитывать накладные за период:">
                     <GridPane hgap="5" vgap="5">
                         <Label text="с:"/>
-                        <DatePicker fx:id="datefrom" GridPane.columnIndex="1" maxWidth="115"/>
+                        <DatePicker fx:id="datefrom" editable="false" GridPane.columnIndex="1" maxWidth="115"/>
                         <Label text="   по:" GridPane.columnIndex="2"/>
-                        <DatePicker fx:id="dateto" GridPane.columnIndex="3" maxWidth="115"/>
+                        <DatePicker fx:id="dateto" editable="false" GridPane.columnIndex="3" maxWidth="115"/>
                     </GridPane>
             </TitledPane>
             <TitledPane text="В строках отчёта выводить:">

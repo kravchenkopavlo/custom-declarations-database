@@ -106,6 +106,9 @@ public void initialize() {
     rb_group.setToggleGroup(toggleGroup);
     rb_declaration.setToggleGroup(toggleGroup);
 
+    //добавляем listener на выбиралки дат
+
+
     // устанавливаем
     select_field.getItems().add("Экспортёр (отправитель)");
     select_field.getItems().add("Код страны отправления");
@@ -334,16 +337,19 @@ public void initialize() {
 
     private void showReport() {
         //отображаем получившуюся таблицу
-        if (!filename.equals("")){
+
+        if ((filename == null) || filename.equals(startLink.toString())){
+            engine.load(startLink.toString());
             saveMenu.setDisable(false);
             printMenu.setDisable(false);
+
+        } else {
             try {
                 engine.load(new File(filename).toURI().toURL().toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
     }
 
     @FXML
@@ -401,7 +407,7 @@ public void initialize() {
         Preferences preferences = new Preferences(filterSet,added_filters.getItems(), datefrom.getValue(),dateto.getValue(),
                 rb_imp.isSelected(),rb_exp.isSelected(),rb_cntr.isSelected(),rb_section.isSelected(),
                 rb_group.isSelected(),rb_gds.isSelected(),rb_declaration.isSelected());
-        if (filename.length()==0) {
+        if (filename == null) {
             preferences.setOpenPage(startLink.toString());
         } else {
             preferences.setOpenPage(filename);

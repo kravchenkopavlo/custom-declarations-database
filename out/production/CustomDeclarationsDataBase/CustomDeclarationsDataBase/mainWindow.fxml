@@ -42,18 +42,15 @@
     <left>
         <VBox>
             <Button fx:id="btn_makeTable" text="Сформировать отчёт" minWidth="305" onAction="#getResults"/>
-            <TitledPane animated="true" text="Учитывать накладные за период:">
-                <content>
+            <TitledPane text="Учитывать накладные за период:">
                     <GridPane hgap="5" vgap="5">
                         <Label text="с:"/>
-                        <DatePicker fx:id="datefrom" GridPane.columnIndex="1" maxWidth="115"/>
+                        <DatePicker fx:id="datefrom" editable="false" GridPane.columnIndex="1" maxWidth="115"/>
                         <Label text="   по:" GridPane.columnIndex="2"/>
-                        <DatePicker fx:id="dateto" GridPane.columnIndex="3" maxWidth="115"/>
+                        <DatePicker fx:id="dateto" editable="false" GridPane.columnIndex="3" maxWidth="115"/>
                     </GridPane>
-                </content>
             </TitledPane>
-            <TitledPane animated="true" text="В строках отчёта выводить:">
-                <content>
+            <TitledPane text="В строках отчёта выводить:">
                     <GridPane hgap="5" vgap="5">
                         <RadioButton fx:id="rb_imp" text="Импортёров (получателей)"/>
                         <RadioButton fx:id="rb_exp" text="Экспортёров (отправителей)" GridPane.rowIndex="1"/>
@@ -63,10 +60,8 @@
                         <RadioButton fx:id="rb_group" text="Группы товаров по УКТЗЕД" GridPane.rowIndex="4"/>
                         <RadioButton fx:id="rb_declaration" text="Таможенные декларации (детально)" GridPane.rowIndex="6"/>
                     </GridPane>
-                </content>
             </TitledPane>
-            <TitledPane animated="true" text="Добавить отборы (фильтры):">
-                <content>
+            <TitledPane text="Добавить отборы (фильтры):">
                     <VBox spacing="5">
                         <GridPane hgap="5">
                             <Label text="Поле:"/>
@@ -85,7 +80,6 @@
                             <Button fx:id="clear_filters" onAction="#clearFilters" text="Удалить все фильтры" minWidth="140"/>
                         </HBox>
                     </VBox>
-                </content>
             </TitledPane>
 
         </VBox>

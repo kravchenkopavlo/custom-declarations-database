@@ -22,7 +22,6 @@ class Report {
     private static final String HTMLrow = "<td align=\"right\">%,.0f</td><td align=\"right\">%,.0f</td><td align=\"right\">%,.2f%%</td></tr>";
     private static final String HTMLtail = "</table></font></body></html>";
 
-
     Report() {
         this.filename = LocalDate.now().toString()+"-"+String.format("%d", LocalTime.now().getHour())+"-"+String.format("%d",LocalTime.now().getMinute())+".html";
     }
@@ -51,7 +50,7 @@ class Report {
 
 
             // если выборка пуста
-            if (rows.size()==0) {
+                if (rows.size()==0) {
                 bw.write(NOTHING_MESSAGE);
             } else {
                 bw.write(String.format(HTMLcaption, rows.get(0).getHTMLCaptions()));
